@@ -148,7 +148,10 @@ function! s:major_mode() abort
     if icon == ''
       let icon = s:FILE.fticon(&ft)
     endif
-  return ' '.icon.'%{empty(&ft)? "" : " " . &ft . " "}'
+    if icon == ''
+      let icon = ''
+    endif
+  return ' '.icon.'%{empty(&ft)? "Unkown" : " " . &ft . " "}'
 endfunction
 
 function! s:modes() abort
